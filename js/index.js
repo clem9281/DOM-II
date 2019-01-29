@@ -10,23 +10,6 @@ let links = Array.from(document.getElementsByTagName("a"));
 let nav = document.querySelector("header");
 let destinationText = document.querySelectorAll(".destination");
 let colors = ["#DD6A52", "#DD6A52", "#E3E3C7", "#9CDBC7", "#68B5AB"];
-let counter = 0;
-// console.logs looking for propagation
-document.addEventListener("click", event => {
-  console.log("home click event");
-});
-document.addEventListener("mouseover", event => {
-  console.log("home mouseover event");
-});
-document.addEventListener("mouseup", event => {
-  console.log("home mouseup event");
-});
-document.addEventListener("load", event => {
-  console.log("home load event");
-});
-document.addEventListener("focus", event => {
-  console.log("home focus event");
-});
 
 // event 1 : mouseleave
 //displays cta modal when mouse leaves document: had to use a named function in order to remove the event listener. click outside the modal to get rid of it, or use exit button
@@ -47,7 +30,11 @@ modalExit.addEventListener("click", event => {
   document.removeEventListener("mouseleave", displayModal);
 });
 
-// event 2: click
+// event 2: click THIS IS ALSO THE NESTED ELEMENT, WITHOUT STOP PROPAGATION THE DESTINATION TEXT TURNS RED WHEN YOU CLICK THE SIGN ME UP BUTTON
+destinationText[0].addEventListener("click", event => {
+  destinationText[0].style.color = "red";
+});
+
 buttons[0].addEventListener("click", event => {
   event.stopPropagation();
   destinationText[0].style.transform = "scale(1.2)";
@@ -108,10 +95,18 @@ links.forEach(element => {
 });
 
 // event 10:  blur
+// when links lose focus return them to previous size
 links.forEach(element => {
   element.addEventListener("blur", event => {
     element.style.transform = "scale(1)";
     element.style.color = "black";
     console.log("lost focus");
+  });
+});
+
+// Stop the navigation from items from refreshing the page by using preventDefault()
+links.forEach(element => {
+  element.addEventListener("click", event => {
+    event.preventDefault;
   });
 });
