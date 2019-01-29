@@ -31,7 +31,7 @@ document.addEventListener("focus", event => {
 // event 1 : mouseleave
 //displays cta modal when mouse leaves document: had to use a named function in order to remove the event listener. click outside the modal to get rid of it, or use exit button
 function displayModal() {
-  modal.style.display = "flex";
+  modal.className += " modal-animation";
   home.addEventListener("click", homeEvent => {
     homeEvent.stopPropagation();
     modal.style.display = "none";

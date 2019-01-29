@@ -6,12 +6,12 @@
   min-height: 50vh;
   min-width: 50vw;
   margin: 0 auto;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   align-content: center;
   display: none;
+  //   opacity: 0;
   border: 10px solid @button-bg;
   h3 {
     font-size: 2rem;
@@ -34,5 +34,20 @@
       border: 1px solid @button-bg;
       transform: scale(1.2);
     }
+  }
+}
+.modal-animation {
+  display: flex;
+  //   opacity: 1;
+  //   transition: opacity 2s;
+  animation-name: appear;
+  animation-duration: 1s;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
