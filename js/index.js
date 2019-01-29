@@ -10,6 +10,7 @@ let links = Array.from(document.getElementsByTagName("a"));
 let nav = document.querySelector("header");
 let destinationText = document.querySelectorAll(".destination");
 let colors = ["#DD6A52", "#DD6A52", "#E3E3C7", "#9CDBC7", "#68B5AB"];
+let welcome = document.querySelector(".intro h2");
 
 // event 1 : mouseleave
 //displays cta modal when mouse leaves document: had to use a named function in order to remove the event listener. click outside the modal to get rid of it, or use exit button
@@ -30,7 +31,7 @@ modalExit.addEventListener("click", event => {
   document.removeEventListener("mouseleave", displayModal);
 });
 
-// event 2: click THIS IS ALSO THE NESTED ELEMENT, WITHOUT STOP PROPAGATION THE DESTINATION TEXT TURNS RED WHEN YOU CLICK THE SIGN ME UP BUTTON
+// event 2: click: THIS IS ALSO THE NESTED ELEMENT, WITHOUT STOP PROPAGATION THE DESTINATION TEXT TURNS RED WHEN YOU CLICK THE SIGN ME UP BUTTON
 destinationText[0].addEventListener("click", event => {
   destinationText[0].style.color = "red";
 });
@@ -81,7 +82,6 @@ bus.addEventListener("load", event => {
 // when the window scrolls make the nav flash different colors
 document.addEventListener("scroll", () => {
   nav.style.background = colors[Math.floor(Math.random() * colors.length)];
-  console.log("scrolling");
 });
 
 // event 9 focus
