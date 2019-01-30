@@ -12,6 +12,7 @@ let destinationText = document.querySelectorAll(".destination");
 let colors = ["#DD6A52", "#DD6A52", "#E3E3C7", "#9CDBC7", "#68B5AB"];
 let welcome = document.querySelector(".intro h2");
 let boat = document.querySelector(".content-destination img");
+let allImgs = Array.from(document.getElementsByTagName("img"));
 // event 1 : mouseleave
 //displays cta modal when mouse leaves document: had to use a named function in order to remove the event listener. click outside the modal to get rid of it, or use exit button
 function displayModal() {
@@ -120,4 +121,15 @@ boat.addEventListener("click", event => {
     .to(event.target, 1, {
       transform: "scale(1)"
     });
+});
+
+let imgTl = new TimelineMax();
+imgTl.staggerFromTo(allImgs, 2, { opacity: 0 }, { opacity: 1 }, 0.5);
+
+// hey I don't want to keep this, it keeps reading the page as scrolled so it doesn't stop the animation, but I thought it was interesting that this code seems to change the z-index of the welcome text? It goes over the header now.
+let welTl = new TimelineMax();
+document.addEventListener("scroll", event => {
+  welTl
+    .to(welcome, 0.1, { transform: "skew(15deg)" })
+    .to(welcome, 0.1, { transform: "skew(-15deg)" });
 });
