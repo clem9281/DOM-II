@@ -11,7 +11,7 @@ let nav = document.querySelector("header");
 let destinationText = document.querySelectorAll(".destination");
 let colors = ["#DD6A52", "#DD6A52", "#E3E3C7", "#9CDBC7", "#68B5AB"];
 let welcome = document.querySelector(".intro h2");
-
+let boat = document.querySelector(".content-destination img");
 // event 1 : mouseleave
 //displays cta modal when mouse leaves document: had to use a named function in order to remove the event listener. click outside the modal to get rid of it, or use exit button
 function displayModal() {
@@ -109,4 +109,15 @@ links.forEach(element => {
   element.addEventListener("click", event => {
     event.preventDefault;
   });
+});
+
+// GSAP
+let boatTimeline = new TimelineMax();
+console.log(boat);
+boat.addEventListener("click", event => {
+  boatTimeline
+    .to(event.target, 1, { transform: "scale(2)" })
+    .to(event.target, 1, {
+      transform: "scale(1)"
+    });
 });
